@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Button, FormControl, Typography } from "@mui/material";
 import { Formik } from "formik";
 import RegisterValidate from "../../ValidationSchemas/RegisterValidate";
-import Link from "next/link";
 import { RegistrationFields } from "../Objects";
 import { Props } from "./Register.types";
 import { getError } from "../../utils/functions";
@@ -21,9 +20,7 @@ const Register = ({ register }: Props) => {
           initialValues={RegistrationFields}
           validationSchema={RegisterValidate}
           onSubmit={async (values, { setStatus }) => {
-            if (await register(values, setStatus)) {
-              router.push("/");
-            }
+            await register(values, setStatus);
           }}
         >
           {({ values, errors, touched, handleSubmit, handleChange, status }) => (

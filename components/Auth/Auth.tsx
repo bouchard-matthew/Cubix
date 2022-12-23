@@ -21,10 +21,8 @@ const Auth = ({ login }: Props) => {
         <Formik
           initialValues={LoginFields}
           validationSchema={LoginValidate}
-          onSubmit={async (values) => {
-            if ((await login(values)) !== undefined) {
-              router.push("/");
-            }
+          onSubmit={async (values, { setStatus }) => {
+            await login(values, setStatus);
           }}
         >
           {({ values, errors, touched, handleSubmit, handleChange }) => (

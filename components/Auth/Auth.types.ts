@@ -1,10 +1,7 @@
-export interface Props {
-  login: (e: any) => void;
-}
+import { LoginFields } from "../../shared/types/login";
 
-export interface LoginFields {
-  username: string;
-  password: string;
+export interface Props {
+  login: (values: LoginFields, setStatus: (status: string) => void) => Promise<void>;
 }
 
 export interface LoginFieldsError {
